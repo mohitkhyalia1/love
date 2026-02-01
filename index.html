@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Will you be my Valentine?</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffd6e7, #ffeef5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.card {
+  background: white;
+  padding: 50px;
+  border-radius: 25px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  text-align: center;
+  width: 95%;
+  max-width: 450px;
+  min-height: 350px;
+  position: relative;
+  overflow: visible;
+}
+
+.ngc-img {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 4px solid #ff4d79;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 14px 32px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+}
+
+#yesBtn {
+  background: #ff4d79;
+  color: white;
+  left: 100px;
+  bottom: 20px;
+}
+
+#noBtn {
+  background: #ddd;
+  transition: left 0.35s ease, top 0.35s ease;
+}
+
+.result {
+  margin-top: 40px;
+  text-align: center;
+  display: none;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+.result-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #e91e63;
+  margin-bottom: 10px;
+}
+
+.result-message {
+  font-size: 20px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+.result-img {
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="cardArea">
+  <img src="NGC.png" class="ngc-img">
+  <h1>NGC will you be my valentine?</h1>
+
+  <button id="yesBtn">Yes</button>
+  <button id="noBtn">No</button>
+
+  <div class="result" id="result">
+    <p class="result-title">You said YES ❤️</p>
+    <p class="result-message">Thank You!!</p>
+    <img src="Image.jpeg" class="result-img">
+  </div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const result = document.getElementById("result");
+const card = document.getElementById("cardArea");
+
+function moveNoButton() {
+  const rect = card.getBoundingClientRect();
+  const btnW = noBtn.offsetWidth;
+  const btnH = noBtn.offsetHeight;
+  const padding = 40;
+
+  const maxX = rect.width - btnW + padding;
+  const maxY = rect.height - btnH + padding;
+
+  const x = Math.random() * maxX - padding/2;
+  const y = Math.random() * maxY - padding/2;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+noBtn.addEventListener("mouseover", moveNoButton);
+noBtn.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  moveNoButton();
+});
+
+setInterval(moveNoButton, 1000);
+
+yesBtn.addEventListener("click", () => {
+  result.style.display = "block";
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+});
+</script>
+
+</body>
+</html>
