@@ -9,14 +9,3 @@ Made using pure HTML, CSS, and JavaScript.
 ## 🌐 Live Portal
 
 https://mohitkhyalia1.github.io/love/
-
----
-
-## 📂 Files
-
-```bash
-love/
-│── index.html
-│── NGC.png
-│── Image.jpeg
-│── README.md
